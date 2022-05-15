@@ -5,7 +5,7 @@ import HeaderComponent from "../Components/Header/Header.Component";
 const HeaderSection = (props) => {
   return (
     <Fragment>
-      <HeaderComponent />
+      <HeaderComponent onOpen={props.onOpen} />
       <HeroComponent />
     </Fragment>
   );

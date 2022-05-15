@@ -1,10 +1,10 @@
 import HeaderButtonComponent from "../HeaderButton/HeaderButton.Component";
 import classes from "./Header.module.css";
-const HeaderComponent = () => {
+const HeaderComponent = (props) => {
   return (
     <header className={classes.header}>
       <h1>PanwarMeals</h1>
-      <HeaderButtonComponent />
+      <HeaderButtonComponent onOpen={props.onOpen} />
     </header>
   );
 };
