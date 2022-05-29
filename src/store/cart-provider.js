@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import CartContext from "./cart-context";
 
-const init = {
+export const init = {
   item: [],
   totalAmount: 0,
 };
@@ -71,6 +71,8 @@ export const cartReducer = (state, action) => {
         totalItems[itemExists] = updatedItem;
       }
       return { item: totalItems, totalAmount: updatedTotalAmount };
+    case "SUBMIT_ITEM":
+      return init;
     default:
       return init;
   }
@@ -87,11 +89,16 @@ const CartProvider = ({ children }) => {
     dispatchCart({ type: "REMOVE_ITEM", payload: id });
   };
 
+  const submitItemHandler = () => {
+    dispatchCart({ type: "SUBMIT_ITEM" });
+  };
+
   const cartContext = {
     item: cartState.item,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    submitItems: submitItemHandler,
   };
 
   const value = { ...cartContext };
